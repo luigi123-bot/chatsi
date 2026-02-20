@@ -1,0 +1,185 @@
+[2026-02-20T15:50:46.411Z] 🚀 Starting Server initialization...
+[2026-02-20T15:50:50.033Z] 🌐 Server ready on http://localhost:3000
+[2026-02-20T15:50:50.120Z] 🔌 Client connected: jqamq4iiuAsd0W9NAAAB
+[2026-02-20T15:50:54.095Z] 🔌 Client connected: DOCXWKkOTa2O_8F8AAAD
+[2026-02-20T15:50:58.692Z] 👋 Client disconnected: jqamq4iiuAsd0W9NAAAB
+[2026-02-20T15:51:04.767Z] 👋 Client disconnected: DOCXWKkOTa2O_8F8AAAD
+[2026-02-20T15:51:05.092Z] 🔌 Client connected: b05zMYX7t-RTU6Y8AAAF
+[2026-02-20T15:51:06.469Z] 🔌 Client connected: HgV3lgLo19F5P3NaAAAH
+[2026-02-20T15:51:19.864Z] 📩 Incoming message from a635f7d1-fdec-478b-9caf-7a9ccf672909 to 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T15:51:19.867Z] 🔍 Searching existing DM between a635f7d1-fdec-478b-9caf-7a9ccf672909 and 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T15:51:19.870Z] ❌ ERROR in sendMessage: Transaction function cannot return a promise
+[2026-02-20T15:51:19.921Z] ✨ Creating NEW conversation: 9df10e36-5cb2-4c14-be23-9c078268d287
+[2026-02-20T15:51:19.953Z] 💾 Saving message b49779b5-3ae9-41b8-bf64-ecb9e6108c7a to DB...
+[2026-02-20T15:51:20.003Z] 🔥 Broadcasting message to all clients...
+[2026-02-20T15:51:40.082Z] 👋 Client disconnected: b05zMYX7t-RTU6Y8AAAF
+[2026-02-20T15:51:40.673Z] 🔌 Client connected: gXkIxQj96wnlwMCyAAAJ
+[2026-02-20T15:51:42.181Z] 👋 Client disconnected: gXkIxQj96wnlwMCyAAAJ
+[2026-02-20T15:51:43.039Z] 🔌 Client connected: 8aoSX_u-T7keTSi9AAAL
+[2026-02-20T15:51:46.360Z] 📩 Incoming message from a635f7d1-fdec-478b-9caf-7a9ccf672909 to 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T15:51:46.361Z] 🔍 Searching existing DM between a635f7d1-fdec-478b-9caf-7a9ccf672909 and 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T15:51:46.362Z] ❌ ERROR in sendMessage: Transaction function cannot return a promise
+[2026-02-20T15:51:46.369Z] ✅ Found existing conversation: 9df10e36-5cb2-4c14-be23-9c078268d287
+[2026-02-20T15:51:46.369Z] 💾 Saving message cba3490f-8108-4294-8a09-77672126a1cf to DB...
+[2026-02-20T15:51:46.382Z] 🔥 Broadcasting message to all clients...
+[2026-02-20T15:51:54.145Z] 👋 Client disconnected: HgV3lgLo19F5P3NaAAAH
+[2026-02-20T15:51:58.542Z] 🔌 Client connected: HFIm7XOB3fE0irTAAAAN
+[2026-02-20T15:53:33.596Z] 🚀 Initializing Socket Server...
+[2026-02-20T15:57:52.647Z] 👋 Client disconnected: 8aoSX_u-T7keTSi9AAAL
+[2026-02-20T15:57:53.347Z] 🔌 Client connected: ZNSIj8l-1fLcSe5OAAAP
+[2026-02-20T15:57:59.837Z] 📩 Incoming message from a635f7d1-fdec-478b-9caf-7a9ccf672909 to 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T15:57:59.838Z] 🔍 Searching existing DM between a635f7d1-fdec-478b-9caf-7a9ccf672909 and 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T15:57:59.839Z] ❌ ERROR in sendMessage: Transaction function cannot return a promise
+[2026-02-20T15:57:59.858Z] ✅ Found existing conversation: 9df10e36-5cb2-4c14-be23-9c078268d287
+[2026-02-20T15:57:59.859Z] 💾 Saving message ddef3166-bd6d-4b9c-a6f2-764a0735d3e8 to DB...
+[2026-02-20T15:57:59.871Z] 🔥 Broadcasting message to all clients...
+[2026-02-20T15:59:40.987Z] 👋 Client disconnected: HFIm7XOB3fE0irTAAAAN
+[2026-02-20T15:59:40.994Z] 👋 Client disconnected: ZNSIj8l-1fLcSe5OAAAP
+[2026-02-20T15:59:41.241Z] 🔌 Client connected: 3C2dvm6iXSIbniAnAAAS
+[2026-02-20T15:59:41.268Z] 🔌 Client connected: Xs4rt071I7jQD65EAAAT
+[2026-02-20T16:00:21.661Z] 📩 Incoming message from a635f7d1-fdec-478b-9caf-7a9ccf672909 to 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T16:00:21.662Z] 🔍 Searching existing DM between a635f7d1-fdec-478b-9caf-7a9ccf672909 and 87ea1b95-5b6d-4cfe-970e-34691a4d07e4
+[2026-02-20T16:00:21.663Z] ❌ ERROR in sendMessage: Transaction function cannot return a promise
+[2026-02-20T16:00:21.680Z] ✅ Found existing conversation: 9df10e36-5cb2-4c14-be23-9c078268d287
+[2026-02-20T16:00:21.681Z] 💾 Saving message 551bf4b0-1660-46ec-af19-043a146cf0ac to DB...
+[2026-02-20T16:00:21.698Z] 🔥 Broadcasting message to all clients...
+[2026-02-20T16:04:10.556Z] 👋 Client disconnected: Xs4rt071I7jQD65EAAAT
+[2026-02-20T16:04:26.285Z] 👋 Client disconnected: 3C2dvm6iXSIbniAnAAAS
+[2026-02-20T16:04:26.814Z] 🔌 Client connected: 1hjpNzzwfnurSrOaAAAV
+[2026-02-20T16:04:48.320Z] 🔌 Client connected: taZ9rfHORIb0M19SAAAX
+[2026-02-20T16:05:40.271Z] 👋 Client disconnected: 1hjpNzzwfnurSrOaAAAV
+[2026-02-20T16:05:40.335Z] 👋 Client disconnected: taZ9rfHORIb0M19SAAAX
+[2026-02-20T16:05:40.347Z] 🔌 Client connected: MV4wAHx97jgIqvI_AAAZ
+[2026-02-20T16:05:40.407Z] 🔌 Client connected: APw8B6vq22A5X8ZYAAAb
+[2026-02-20T16:06:54.707Z] 👋 Client disconnected: MV4wAHx97jgIqvI_AAAZ
+[2026-02-20T16:06:55.201Z] 🔌 Client connected: W7fnsoB846hUMHEEAAAd
+[2026-02-20T16:06:57.088Z] 🔌 Client connected: k_qt_XSkYg4JCZZRAAAg
+[2026-02-20T16:10:59.167Z] 👋 Client disconnected: APw8B6vq22A5X8ZYAAAb
+[2026-02-20T16:11:00.068Z] 🔌 Client connected: QsKvI9WILTyaJ0AuAAAi
+[2026-02-20T16:11:02.377Z] 🔌 Client connected: RGTtx9R6c7LWO4joAAAl
+[2026-02-20T16:13:45.445Z] 👋 Client disconnected: RGTtx9R6c7LWO4joAAAl
+[2026-02-20T16:13:45.452Z] 👋 Client disconnected: k_qt_XSkYg4JCZZRAAAg
+[2026-02-20T16:13:45.471Z] 🔌 Client connected: PhgYxCgOrGb_t_AJAAAo
+[2026-02-20T16:13:45.473Z] 🔌 Client connected: 3zRdaem_s1msQRUuAAAp
+[2026-02-20T16:24:45.773Z] 👋 Client disconnected: 3zRdaem_s1msQRUuAAAp
+[2026-02-20T16:24:45.817Z] 🔌 Client connected: rUtiwe7-lPKUCqWRAAAr
+[2026-02-20T16:25:02.570Z] 👋 Client disconnected: rUtiwe7-lPKUCqWRAAAr
+[2026-02-20T16:25:05.141Z] 👋 Client disconnected: QsKvI9WILTyaJ0AuAAAi
+[2026-02-20T16:25:10.216Z] 👋 Client disconnected: PhgYxCgOrGb_t_AJAAAo
+[2026-02-20T16:25:11.996Z] 👋 Client disconnected: W7fnsoB846hUMHEEAAAd
+[2026-02-20T16:25:23.437Z] 🔌 Client connected: cJrxm-3SFHbSnn28AAAt
+[2026-02-20T16:25:25.218Z] 🔌 Client connected: NJTGdVgTglm8dIgRAAAw
+[2026-02-20T16:25:28.142Z] 👋 Client disconnected: NJTGdVgTglm8dIgRAAAw
+[2026-02-20T16:25:28.154Z] 🔌 Client connected: ut_N0vYsm3Oi7AZJAAAy
+[2026-02-20T16:27:00.171Z] 👋 Client disconnected: ut_N0vYsm3Oi7AZJAAAy
+[2026-02-20T16:27:03.297Z] 🔌 Client connected: rAaM3bJYggQbdYEXAAA1
+[2026-02-20T16:27:12.292Z] 👋 Client disconnected: rAaM3bJYggQbdYEXAAA1
+[2026-02-20T16:27:20.165Z] 👋 Client disconnected: cJrxm-3SFHbSnn28AAAt
+[2026-02-20T16:27:50.620Z] 🔌 Client connected: trqpDO8Wrj1CqpBzAAA3
+[2026-02-20T16:27:50.667Z] 👋 Client disconnected: trqpDO8Wrj1CqpBzAAA3
+[2026-02-20T16:27:51.257Z] 🔌 Client connected: AqwkbN4GlXMrfRYKAAA5
+[2026-02-20T16:30:05.340Z] 🔌 Client connected: bzqtGQgVQLQg4u2cAAA7
+[2026-02-20T16:30:16.726Z] 🚀 Initializing Socket Server...
+[2026-02-20T16:30:45.027Z] 🚀 Initializing Socket Server...
+[2026-02-20T16:30:48.059Z] 🌐 Server ready on http://localhost:3000
+[2026-02-20T16:30:49.666Z] 🔌 Client connected: 5DwNasQwb3NpDQVoAAAB
+[2026-02-20T16:30:52.455Z] 🔌 Client connected: ezKnI5rdAvWrN49ZAAAD
+[2026-02-20T16:30:54.593Z] 👋 Client disconnected: ezKnI5rdAvWrN49ZAAAD
+[2026-02-20T16:30:54.621Z] 👋 Client disconnected: 5DwNasQwb3NpDQVoAAAB
+[2026-02-20T16:30:55.900Z] 🔌 Client connected: jTpFk53AW_n9elCnAAAF
+[2026-02-20T16:31:10.734Z] 🚀 Initializing Socket Server...
+[2026-02-20T16:31:22.897Z] 🚀 Initializing Socket Server...
+[2026-02-20T16:31:58.962Z] 🚀 Initializing Socket Server...
+[2026-02-20T16:32:02.915Z] 🌐 Server ready on http://localhost:3000
+[2026-02-20T16:32:06.433Z] 🔌 Client connected: Ov87OK2qiU6DxGhuAAAB
+[2026-02-20T16:32:10.733Z] 👋 Client disconnected: Ov87OK2qiU6DxGhuAAAB
+[2026-02-20T16:32:12.340Z] 🔌 Client connected: Ru7n7wDCNt1kaPXOAAAE
+[2026-02-20T16:32:12.465Z] 🔌 Client connected: kewLz-ViEjudh1MVAAAF
+[2026-02-20T16:32:27.240Z] 🛠️ Attempting to create room: {"ownerId":"a635f7d1-fdec-478b-9caf-7a9ccf672909","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T16:32:27.244Z] 🌟 Room created: 767374 for guest gotopoluis19@gmail.com
+[2026-02-20T16:32:51.386Z] 🚫 Room 767374 closed due to disconnect
+[2026-02-20T16:32:51.389Z] 👋 Client disconnected: Ru7n7wDCNt1kaPXOAAAE
+[2026-02-20T16:32:53.117Z] 🔌 Client connected: ChMYfPBMlXlG50yeAAAH
+[2026-02-20T16:33:05.226Z] 🛠️ Attempting to create room: {"ownerId":"a635f7d1-fdec-478b-9caf-7a9ccf672909","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T16:33:05.227Z] 🌟 Room created: 841649 for guest gotopoluis19@gmail.com
+[2026-02-20T16:33:35.001Z] 🤝 Guest gotopoluis19@gmail.com joined room 841649
+[2026-02-20T16:34:35.774Z] 🚫 Room 841649 closed due to disconnect
+[2026-02-20T16:34:35.775Z] 👋 Client disconnected: ChMYfPBMlXlG50yeAAAH
+[2026-02-20T16:35:37.285Z] 🔌 Client connected: QIMJuRWyU1OucGVJAAAJ
+[2026-02-20T16:35:48.384Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T16:35:48.385Z] 🌟 Room created: 974729 for guest gotopoluis19@gmail.com
+[2026-02-20T16:36:14.934Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T16:36:14.935Z] 🌟 Room created: 282344 for guest gotopoluis19@gmail.com
+[2026-02-20T16:36:24.804Z] 🤝 Guest gotopoluis19@gmail.com joined room 282344
+[2026-02-20T17:52:40.818Z] 🚫 Room 282344 closed due to disconnect
+[2026-02-20T17:52:40.836Z] 👋 Client disconnected: kewLz-ViEjudh1MVAAAF
+[2026-02-20T17:52:40.870Z] 🚫 Room 974729 closed due to disconnect
+[2026-02-20T17:52:40.910Z] 👋 Client disconnected: QIMJuRWyU1OucGVJAAAJ
+[2026-02-20T19:51:46.346Z] 🔌 Client connected: wCacePeaDCBano4wAAAL
+[2026-02-20T19:51:46.629Z] 🔌 Client connected: qYimjJwjYrmyRR5uAAAN
+[2026-02-20T19:52:37.741Z] 🛠️ Attempting to create room: {"ownerId":"87ea1b95-5b6d-4cfe-970e-34691a4d07e4","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T19:52:37.745Z] 🌟 Room created: 412303 for guest gotopoluis19@gmail.com
+[2026-02-20T19:53:30.968Z] 🚫 Room 412303 closed due to disconnect
+[2026-02-20T19:53:31.056Z] 👋 Client disconnected: qYimjJwjYrmyRR5uAAAN
+[2026-02-20T19:53:31.084Z] 👋 Client disconnected: wCacePeaDCBano4wAAAL
+[2026-02-20T19:59:59.785Z] 🔌 Client connected: DDQwqPL9ab8IX_OeAAAP
+[2026-02-20T19:59:59.873Z] 🔌 Client connected: 6kgIw6VDFrO_z_RIAAAR
+[2026-02-20T20:05:01.918Z] 🛠️ Attempting to create room: {"ownerId":"87ea1b95-5b6d-4cfe-970e-34691a4d07e4","guestEmail":"gotopoluis51@gmail.com"}
+[2026-02-20T20:05:01.920Z] 🌟 Room created: 771255 for guest gotopoluis51@gmail.com
+[2026-02-20T20:06:09.624Z] 👋 Client disconnected: DDQwqPL9ab8IX_OeAAAP
+[2026-02-20T20:06:16.805Z] 🔌 Client connected: klCaT1ykCtEKQOE5AAAT
+[2026-02-20T20:06:30.775Z] 🤝 Guest gotopoluis51@gmail.com joined room 771255
+[2026-02-20T20:16:57.797Z] 🚫 Room 771255 closed due to disconnect
+[2026-02-20T20:16:57.801Z] 👋 Client disconnected: klCaT1ykCtEKQOE5AAAT
+[2026-02-20T20:16:58.390Z] 🔌 Client connected: Lezfv-6rB6pyhwBqAAAV
+[2026-02-20T20:17:11.824Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T20:17:11.828Z] 🌟 Room created: 375169 for guest gotopoluis19@gmail.com
+[2026-02-20T20:35:55.046Z] 👋 Client disconnected: 6kgIw6VDFrO_z_RIAAAR
+[2026-02-20T20:35:55.088Z] 🚫 Room 375169 closed due to disconnect
+[2026-02-20T20:35:55.089Z] 👋 Client disconnected: Lezfv-6rB6pyhwBqAAAV
+[2026-02-20T20:36:37.016Z] 🔌 Client connected: HdpDehgjtMSf64tLAAAY
+[2026-02-20T20:36:37.178Z] 🔌 Client connected: H57S3DECnjpKAOWhAAAZ
+[2026-02-20T20:36:39.777Z] 🔌 Client connected: osM7ntB6EyFZSKFUAAAb
+[2026-02-20T20:37:21.781Z] 👋 Client disconnected: H57S3DECnjpKAOWhAAAZ
+[2026-02-20T20:37:21.782Z] 👋 Client disconnected: HdpDehgjtMSf64tLAAAY
+[2026-02-20T20:40:48.075Z] 🔌 Client connected: poFprnMwtxE8covHAAAd
+[2026-02-20T20:43:24.885Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T20:43:24.888Z] 🌟 Room created: 932791 for guest gotopoluis19@gmail.com
+[2026-02-20T20:43:46.406Z] 🤝 Guest gotopoluis19@gmail.com joined room 932791
+[2026-02-20T21:07:23.977Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T21:07:23.980Z] 🌟 Room created: 241437 for guest gotopoluis19@gmail.com
+[2026-02-20T21:07:33.706Z] 🤝 Guest gotopoluis19@gmail.com joined room 241437
+[2026-02-20T21:13:53.240Z] 🛠️ Attempting to create room: {"ownerId":"87ea1b95-5b6d-4cfe-970e-34691a4d07e4","guestEmail":"gotopoluis51@gmail.com"}
+[2026-02-20T21:13:53.241Z] 🌟 Room created: 971925 for guest gotopoluis51@gmail.com
+[2026-02-20T21:14:04.395Z] 🤝 Guest gotopoluis51@gmail.com joined room 971925
+[2026-02-20T21:21:54.041Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T21:21:54.065Z] 🌟 Room created: 986488 for guest gotopoluis19@gmail.com
+[2026-02-20T21:22:11.853Z] 🤝 Guest gotopoluis19@gmail.com joined room 986488
+[2026-02-20T21:29:31.310Z] 🚀 Initializing Socket Server...
+[2026-02-20T21:29:35.839Z] 🌐 Server ready on http://localhost:3000
+[2026-02-20T21:29:38.476Z] 🔌 Client connected: VN-p8v58zIDOVNo_AAAB
+[2026-02-20T21:29:40.328Z] 👋 Client disconnected: VN-p8v58zIDOVNo_AAAB
+[2026-02-20T21:29:41.616Z] 🔌 Client connected: eoA5H4SnG85eEXMpAAAD
+[2026-02-20T21:29:41.647Z] 🔌 Client connected: PHtNcCGaoq-gYxcgAAAF
+[2026-02-20T21:30:06.402Z] 👋 Client disconnected: PHtNcCGaoq-gYxcgAAAF
+[2026-02-20T21:30:06.407Z] 👋 Client disconnected: eoA5H4SnG85eEXMpAAAD
+[2026-02-20T21:30:53.968Z] 🔌 Client connected: QBFrPcokz1X1syTkAAAH
+[2026-02-20T21:31:01.920Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T21:31:01.926Z] 🌟 Room created: 442870 for guest gotopoluis19@gmail.com
+[2026-02-20T21:31:04.325Z] 🔌 Client connected: yNqb4X9RqytSGvpWAAAJ
+[2026-02-20T21:31:15.347Z] 🤝 Guest gotopoluis19@gmail.com joined room 442870
+[2026-02-20T21:34:12.001Z] 🚫 Room 442870 closed due to disconnect
+[2026-02-20T21:34:12.002Z] 👋 Client disconnected: QBFrPcokz1X1syTkAAAH
+[2026-02-20T21:34:12.056Z] 👋 Client disconnected: yNqb4X9RqytSGvpWAAAJ
+[2026-02-20T21:34:16.892Z] 🔌 Client connected: Oyphpl_qHjs1h3TJAAAL
+[2026-02-20T21:34:27.468Z] 👋 Client disconnected: Oyphpl_qHjs1h3TJAAAL
+[2026-02-20T21:34:27.526Z] 🔌 Client connected: zq3joMQA0qtFAtaLAAAN
+[2026-02-20T21:34:30.731Z] 👋 Client disconnected: zq3joMQA0qtFAtaLAAAN
+[2026-02-20T21:34:36.241Z] 🔌 Client connected: WoW68yaZfYWYSSiCAAAP
+[2026-02-20T21:34:39.383Z] 📩 Message from 87ea1b95-5b6d-4cfe-970e-34691a4d07e4 to 203a6db5-3ec3-442e-8544-f0c2023829f2
+[2026-02-20T21:34:39.394Z] ✨ Creating NEW conversation: 4f110e66-6f62-427a-a798-c9ac4f874d95
+[2026-02-20T21:34:39.451Z] ✅ Message saved to SQLite. Broadcasting...
+[2026-02-20T22:07:55.436Z] 👋 Client disconnected: WoW68yaZfYWYSSiCAAAP
+[2026-02-20T22:08:10.299Z] 🔌 Client connected: NmwKJcn7liR1B0oMAAAR
+[2026-02-20T22:32:02.869Z] 👋 Client disconnected: NmwKJcn7liR1B0oMAAAR
+[2026-02-20T22:32:20.380Z] 🔌 Client connected: J7tmY5AvxZG9B4oUAAAT
