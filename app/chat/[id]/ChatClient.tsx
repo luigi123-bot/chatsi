@@ -13,8 +13,8 @@ export default function ChatClient({ id }: { id: string }) {
     const [mounted, setMounted] = useState(false);
     const [messages, setMessages] = useState<any[]>([]);
     const [newMessage, setNewMessage] = useState('');
-    const [receiver, setReceiver] = useState<{ id: string; name: string; avatarUrl?: string } | null>(null);
-    const [currentUserObj, setCurrentUserObj] = useState<any>(null);
+    const [receiver, setReceiver] = useState<{ id: string; name: string; email: string; avatarUrl?: string } | null>(null);
+    const [currentUserObj, setCurrentUserObj] = useState<{ id: string; name: string; email: string; avatarUrl?: string } | null>(null);
     const [loading, setLoading] = useState(true);
     const [loadingHistory, setLoadingHistory] = useState(true);
     const [uploading, setUploading] = useState(false);
