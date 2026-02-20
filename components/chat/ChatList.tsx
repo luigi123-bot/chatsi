@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, UserPlus, MoreHorizontal, Settings, LogOut, MessageSquare, Loader2 } from 'lucide-react';
+import { Search, UserPlus, MoreHorizontal, Settings, LogOut, MessageSquare, Loader2, Key, Eye, EyeOff, X, CheckCircle2 } from 'lucide-react';
 import { clsx } from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -21,6 +21,11 @@ export default function ChatList() {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState<User | null>(null);
+    const [showSettings, setShowSettings] = useState(false);
+    const [newPassword, setNewPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [updateSuccess, setUpdateSuccess] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -62,6 +67,30 @@ export default function ChatList() {
         router.push('/login');
     };
 
+    const handleChangePassword = async () => {
+        if (!newPassword || !currentUser) return;
+        setIsUpdating(true);
+        try {
+            const res = await fetch('/api/users/change-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId: currentUser.id, newPassword })
+            });
+            if (res.ok) {
+                setUpdateSuccess(true);
+                setTimeout(() => {
+                    setUpdateSuccess(false);
+                    setShowSettings(false);
+                    setNewPassword('');
+                }, 1500);
+            }
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setIsUpdating(false);
+        }
+    };
+
     return (
         <div className="w-full md:w-[400px] h-full flex flex-col bg-[#020617] border-r border-white/5 relative overflow-hidden">
             {/* Background Glow */}
@@ -77,7 +106,10 @@ export default function ChatList() {
                         <h1 className="text-2xl font-black text-white tracking-tighter uppercase italic">ChatApp</h1>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <button className="p-2.5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-all duration-300">
+                        <button
+                            onClick={() => setShowSettings(true)}
+                            className="p-2.5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-indigo-400 transition-all duration-300"
+                        >
                             <Settings size={20} />
                         </button>
                         <button
@@ -204,6 +236,72 @@ export default function ChatList() {
                     </button>
                 </div>
             </div>
+
+            {/* Password Settings Modal */}
+            {showSettings && (
+                <div className="absolute inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-end md:items-center justify-center p-4 animate-in fade-in duration-300">
+                    <div className="w-full max-w-sm bg-[#0f172a] border border-white/10 rounded-[32px] p-8 shadow-2xl animate-in slide-in-from-bottom-10 duration-500 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-3xl rounded-full -mr-16 -mt-16" />
+
+                        <button
+                            onClick={() => setShowSettings(false)}
+                            className="absolute top-6 right-6 p-2 text-slate-500 hover:text-white hover:bg-white/5 rounded-full transition-colors"
+                        >
+                            <X size={20} />
+                        </button>
+
+                        <div className="text-center mb-10">
+                            <div className="w-16 h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-indigo-500/20">
+                                <Key className="text-indigo-400" size={28} />
+                            </div>
+                            <h3 className="text-xl font-black text-white italic uppercase tracking-tight">Security Node</h3>
+                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-1">Update Access Key</p>
+                        </div>
+
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-2">New Payload Password</label>
+                                <div className="relative group">
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        value={newPassword}
+                                        onChange={(e) => setNewPassword(e.target.value)}
+                                        placeholder="Enter new key..."
+                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 transition-all font-mono"
+                                    />
+                                    <button
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-indigo-400 transition-colors"
+                                    >
+                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button
+                                onClick={handleChangePassword}
+                                disabled={!newPassword || isUpdating || updateSuccess}
+                                className={clsx(
+                                    "w-full py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] transition-all flex items-center justify-center space-x-3",
+                                    updateSuccess ? "bg-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.3)]" :
+                                        (newPassword && !isUpdating ? "bg-indigo-600 text-white hover:scale-[1.02] shadow-lg shadow-indigo-600/20" : "bg-white/5 text-slate-600 opacity-50")
+                                )}
+                            >
+                                {isUpdating ? (
+                                    <Loader2 className="animate-spin" size={16} />
+                                ) : updateSuccess ? (
+                                    <>
+                                        <CheckCircle2 size={16} />
+                                        <span>Key Injected</span>
+                                    </>
+                                ) : (
+                                    <span>Sync Credentials</span>
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
