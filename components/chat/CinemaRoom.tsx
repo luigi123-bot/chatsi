@@ -215,8 +215,16 @@ export default function CinemaRoom({ receiver, currentUser, onExit, socket }: { 
                 if (receivedSize.current >= expectedSize.current) {
                     addLog('Payload Verified');
                     const blob = new Blob(receivedChunks.current, { type: realMimeRef.current });
-                    setFileUrl(URL.createObjectURL(blob));
+                    const url = URL.createObjectURL(blob);
+                    setFileUrl(url);
                     setTransferComplete(true);
+
+                    // Force Autoplay attempt as soon as Ready
+                    setTimeout(() => {
+                        if (videoRef.current) {
+                            videoRef.current.play().catch(e => console.log("Autoplay blocked, waiting for unmute"));
+                        }
+                    }, 500);
                 }
             }
         };
@@ -229,7 +237,7 @@ export default function CinemaRoom({ receiver, currentUser, onExit, socket }: { 
         }
 
         const dc = dataChannelRef.current;
-        // High-Performance Optimization: Use backpressure management
+        // High-Performance     imization: Use backpressure management
         dc.bufferedAmountLowThreshold = 65536 * 2; // 128KB threshold
 
         try {
@@ -325,47 +333,38 @@ export default function CinemaRoom({ receiver, currentUser, onExit, socket }: { 
                 onChange={handleFileSelect}
                 accept="video/*,application/pdf,image/*"
             />
-            {/* Real-time Status Hub */}
-            <div className="absolute bottom-10 left-10 z-[150] flex flex-col space-y-3 pointer-events-none opacity-40">
-                {log.map((l: string, i: number) => (
-                    <div key={i} className="bg-black/80 text-[10px] text-indigo-400 font-bold px-4 py-2 rounded-2xl border border-white/10 uppercase tracking-[0.2em] shadow-3xl animate-in slide-in-from-left-4">
-                        {l}
-                    </div>
-                ))}
-            </div>
 
-            <header className="flex items-center justify-between p-6 bg-transparent z-[120]">
-                <div className="flex items-center space-x-5">
-                    <div className="w-12 h-12 rounded-[20px] bg-white/5 backdrop-blur-3xl border border-white/10 flex items-center justify-center shadow-xl">
-                        <Radio size={24} className="text-white animate-pulse" />
+
+            <header className="flex items-center justify-between p-4 md:p-6 bg-transparent z-[120]">
+                <div className="flex items-center space-x-3 md:space-x-5">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-[16px] md:rounded-[20px] bg-white/5 backdrop-blur-3xl border border-white/10 flex items-center justify-center shadow-xl">
+                        <Radio size={20} className="text-white animate-pulse" />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-black italic uppercase tracking-tighter mb-0.5">Cinema Sync</h2>
-                        <div className="flex items-center space-x-3">
-                            <div className="w-2 h-2 rounded-full bg-indigo-500 shadow-[0_0_8px_indigo]" />
-                            <span className="text-[9px] text-slate-400 font-black uppercase tracking-[0.4em]">Direct Payload Bridge</span>
+                        <h2 className="text-lg md:text-2xl font-black italic uppercase tracking-tighter mb-0.5">Cinema Sync</h2>
+                        <div className="hidden xs:flex items-center space-x-2 md:space-x-3">
+                            <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-indigo-500 shadow-[0_0_8px_indigo]" />
+                            <span className="text-[7px] md:text-[9px] text-slate-400 font-black uppercase tracking-[0.4em]">Direct Payload</span>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex items-center space-x-5">
-                    <div className="bg-white/5 backdrop-blur-2xl border border-white/10 p-4 px-8 rounded-[24px] flex items-center space-x-4 shadow-xl">
+                <div className="flex items-center space-x-3 md:space-x-5">
+                    <div className="hidden sm:flex bg-white/5 backdrop-blur-2xl border border-white/10 p-3 md:p-4 px-4 md:px-8 rounded-[18px] md:rounded-[24px] items-center space-x-3 md:space-x-4 shadow-xl">
                         {connectionStatus === 'connected' ? (
-                            <ShieldCheck className="text-green-500" size={20} />
-                        ) : connectionStatus === 'connecting' ? (
-                            <Loader2 className="text-indigo-400 animate-spin" size={20} />
+                            <ShieldCheck className="text-green-500" size={16} />
                         ) : (
-                            <Wifi className="text-slate-500" size={20} />
+                            <Wifi className="text-slate-500" size={16} />
                         )}
                         <div className="flex flex-col">
-                            <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Bridge Interface</span>
-                            <span className={`text-sm font-black uppercase tracking-wider ${connectionStatus === 'connected' ? 'text-green-500' : 'text-slate-400'}`}>
-                                {connectionStatus === 'connected' ? 'Established' : connectionStatus === 'connecting' ? 'Negotiating' : 'Protocol Idle'}
+                            <span className="text-[7px] font-black text-slate-600 uppercase tracking-widest leading-none mb-1">Status</span>
+                            <span className={`text-[10px] md:text-sm font-black uppercase tracking-wider ${connectionStatus === 'connected' ? 'text-green-500' : 'text-slate-400'}`}>
+                                {connectionStatus === 'connected' ? 'Established' : 'Protocol Idle'}
                             </span>
                         </div>
                     </div>
-                    <button onClick={onExit} className="w-12 h-12 rounded-[18px] bg-red-500/10 hover:bg-red-500 text-slate-400 hover:text-white transition-all border border-white/5 flex items-center justify-center shadow-lg">
-                        <X size={20} />
+                    <button onClick={onExit} className="w-10 h-10 md:w-12 md:h-12 rounded-[14px] md:rounded-[18px] bg-red-500/10 hover:bg-red-500 text-slate-400 hover:text-white transition-all border border-white/5 flex items-center justify-center shadow-lg">
+                        <X size={18} />
                     </button>
                 </div>
             </header>
@@ -477,8 +476,8 @@ export default function CinemaRoom({ receiver, currentUser, onExit, socket }: { 
                 )}
 
                 {mode === 'cinema' && (
-                    <div className="w-full max-w-5xl animate-in zoom-in-95 duration-1000 flex flex-col h-[82vh] relative px-4 mx-auto gap-4">
-                        <div className="relative group rounded-[32px] overflow-hidden border border-white/5 shadow-2xl bg-black flex-1 flex items-center justify-center group overflow-hidden">
+                    <div className="w-full max-w-5xl animate-in zoom-in-95 duration-1000 flex flex-col h-[75vh] md:h-[82vh] relative px-2 md:px-4 mx-auto gap-3 md:gap-4">
+                        <div className="relative group rounded-[24px] md:rounded-[32px] overflow-hidden border border-white/5 shadow-2xl bg-black flex-1 flex items-center justify-center group overflow-hidden">
                             {transferComplete && fileUrl ? (
                                 <>
                                     {fileType === 'video' ? (
@@ -493,6 +492,7 @@ export default function CinemaRoom({ receiver, currentUser, onExit, socket }: { 
                                                 onSeeked={() => handleSync('seek')}
                                                 autoPlay
                                                 muted={!isOwnerState.current && isMuted}
+                                                playsInline
                                             />
                                             {/* Active Peer Badge */}
                                             <div className="absolute top-6 left-6 z-[160] flex items-center space-x-3 bg-black/40 backdrop-blur-xl p-2 px-4 rounded-full border border-white/10 animate-in slide-in-from-left-4">
@@ -503,19 +503,24 @@ export default function CinemaRoom({ receiver, currentUser, onExit, socket }: { 
                                                 </div>
                                             </div>
 
+                                            {/* Discrete Unmute Control for Guests */}
                                             {!isOwnerState.current && isMuted && (
-                                                <button
-                                                    onClick={() => { setIsMuted(false); if (videoRef.current) { videoRef.current.muted = false; videoRef.current.play(); } }}
-                                                    className="absolute inset-0 bg-black/90 backdrop-blur-3xl flex flex-col items-center justify-center space-y-8 z-[150] animate-in fade-in duration-500"
-                                                >
-                                                    <div className="w-20 h-20 rounded-full bg-indigo-600 flex items-center justify-center shadow-[0_0_60px_rgba(79,70,229,0.6)] border-4 border-white/5 hover:scale-110 transition-transform duration-500 active:scale-95 group">
-                                                        <Volume2 className="text-white group-hover:animate-bounce" size={32} />
-                                                    </div>
-                                                    <div className="text-center">
-                                                        <span className="text-white font-black text-3xl tracking-tighter uppercase italic block mb-2">Unmute Social Sync</span>
-                                                        <span className="text-indigo-400 font-bold text-[8px] uppercase tracking-[0.5em] opacity-80">Connected to Host Stream</span>
-                                                    </div>
-                                                </button>
+                                                <div className="absolute bottom-6 right-6 z-[170] pointer-events-none">
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setIsMuted(false);
+                                                            if (videoRef.current) {
+                                                                videoRef.current.muted = false;
+                                                                videoRef.current.play();
+                                                            }
+                                                        }}
+                                                        className="pointer-events-auto flex items-center space-x-3 bg-indigo-600/80 hover:bg-indigo-500 backdrop-blur-xl p-3 px-6 rounded-2xl border border-white/20 shadow-2xl transition-all hover:scale-105 active:scale-95 group animate-in slide-in-from-right-4 duration-500"
+                                                    >
+                                                        <Volume2 className="text-white group-hover:animate-pulse" size={16} />
+                                                        <span className="text-white font-black text-[9px] tracking-[0.2em] uppercase italic">Unmute Audio</span>
+                                                    </button>
+                                                </div>
                                             )}
                                         </>
                                     ) : fileType === 'image' ? (
@@ -559,53 +564,49 @@ export default function CinemaRoom({ receiver, currentUser, onExit, socket }: { 
                             </div>
                         </div>
 
-                        <footer className="flex items-center justify-between px-8 py-4 bg-white/[0.02] rounded-[28px] border border-white/5 backdrop-blur-2xl shadow-xl">
-                            <div className="flex items-center space-x-5">
-                                <div className="w-10 h-10 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center shadow-lg group relative overflow-hidden transition-transform hover:scale-105">
+                        <footer className="flex flex-col sm:flex-row items-center justify-between px-4 md:px-8 py-4 bg-white/[0.02] rounded-[24px] md:rounded-[28px] border border-white/5 backdrop-blur-2xl shadow-xl gap-4 sm:gap-0 mt-auto">
+                            <div className="flex items-center space-x-3 md:space-x-5 w-full sm:w-auto">
+                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-black/40 border border-white/10 flex items-center justify-center shadow-lg group relative overflow-hidden shrink-0">
                                     <div className="absolute inset-0 bg-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    {fileType === 'video' ? <Monitor className="text-indigo-400" size={20} /> : fileType === 'pdf' ? <FileText className="text-amber-400" size={20} /> : <ImageIcon className="text-pink-400" size={20} />}
+                                    {fileType === 'video' ? <Monitor className="text-indigo-400" size={16} /> : fileType === 'pdf' ? <FileText className="text-amber-400" size={16} /> : <ImageIcon className="text-pink-400" size={16} />}
                                 </div>
-                                <div>
-                                    <h4 className="text-base font-black tracking-tight italic uppercase text-white line-clamp-1 opacity-90">{fileName || 'Bridge Pulse...'}</h4>
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex items-center space-x-2 bg-indigo-500/10 p-0.5 px-2 rounded-full border border-indigo-500/10 shadow-inner">
-                                            <Activity size={10} className="text-indigo-400" />
-                                            <span className="text-[6px] font-black text-indigo-400 uppercase tracking-widest leading-none">P-Sync v9.8</span>
+                                <div className="min-w-0">
+                                    <h4 className="text-xs md:text-base font-black tracking-tight italic uppercase text-white truncate opacity-90">{fileName || 'Bridge Pulse...'}</h4>
+                                    <div className="flex items-center space-x-2 md:space-x-4">
+                                        <div className="flex items-center space-x-1.5 md:space-x-2 bg-indigo-500/10 p-0.5 px-1.5 md:px-2 rounded-full border border-indigo-500/10 shadow-inner">
+                                            <Activity size={8} className="text-indigo-400" />
+                                            <span className="text-[5px] md:text-[6px] font-black text-indigo-400 uppercase tracking-widest leading-none">P-Sync v9.8</span>
                                         </div>
-                                        <div className="flex items-center space-x-2 text-slate-600">
-                                            <Database size={10} />
-                                            <span className="text-[6px] font-black uppercase tracking-[0.3em]">ID: {(roomCode || '---').slice(0, 6)}</span>
+                                        <div className="flex items-center space-x-1.5 md:space-x-2 text-slate-600">
+                                            <Database size={8} />
+                                            <span className="text-[5px] md:text-[6px] font-black uppercase tracking-[0.3em]">ID: {(roomCode || '---').slice(0, 3)}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex items-center space-x-6">
-                                {!transferComplete && (
-                                    <div className="bg-indigo-600/10 p-2 px-4 rounded-lg text-indigo-400 border border-indigo-500/10 flex items-center space-x-3 animate-pulse">
-                                        <span className="font-black text-sm italic">{transferProgress}%</span>
+                            <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto space-x-4 md:space-x-6 border-t sm:border-t-0 sm:border-l border-white/5 pt-3 sm:pt-0 sm:pl-6">
+                                <div className="flex items-center space-x-3 md:space-x-6">
+                                    {!transferComplete && (
+                                        <div className="bg-indigo-600/10 p-1.5 md:p-2 px-3 md:px-4 rounded-lg text-indigo-400 border border-indigo-500/10 flex items-center space-x-2 md:space-x-3 animate-pulse">
+                                            <span className="font-black text-xs md:text-sm italic">{transferProgress}%</span>
+                                        </div>
+                                    )}
+                                    {isOwnerState.current && (
+                                        <button
+                                            onClick={() => fileInputRef.current?.click()}
+                                            className="bg-indigo-600 hover:bg-indigo-500 p-2 md:p-2.5 px-4 md:px-6 rounded-lg md:rounded-xl text-white shadow-lg flex items-center space-x-2 md:space-x-3 transition-all hover:scale-105 active:scale-95 group shrink-0"
+                                        >
+                                            <RefreshCw size={12} className="group-hover:rotate-180 transition-transform duration-1000" />
+                                            <span className="font-black text-[7px] md:text-[8px] uppercase tracking-[0.2em] md:tracking-[0.4em]">Switch</span>
+                                        </button>
+                                    )}
+                                </div>
+                                <div className="text-right shrink-0">
+                                    <div className="flex items-center justify-end space-x-1 md:space-x-2 text-indigo-400 mb-0.5">
+                                        <Wifi size={10} className="animate-pulse" />
+                                        <span className="font-black text-[7px] md:text-[9px] uppercase tracking-[0.1em] md:tracking-[0.2em] italic leading-none">Healthy</span>
                                     </div>
-                                )}
-                                {transferComplete && (
-                                    <div className="flex items-center space-x-2 bg-green-500/5 p-2 px-4 rounded-xl border border-green-500/10">
-                                        <CheckCircle2 size={12} className="text-green-500" />
-                                        <span className="font-black text-[7px] text-green-500 uppercase tracking-widest">In Sync</span>
-                                    </div>
-                                )}
-                                {isOwnerState.current && (
-                                    <button
-                                        onClick={() => fileInputRef.current?.click()}
-                                        className="bg-indigo-600 hover:bg-indigo-500 p-2.5 px-6 rounded-xl text-white shadow-lg flex items-center space-x-3 transition-all hover:scale-105 active:scale-95 group"
-                                    >
-                                        <RefreshCw size={14} className="group-hover:rotate-180 transition-transform duration-1000" />
-                                        <span className="font-black text-[8px] uppercase tracking-[0.4em]">Switch</span>
-                                    </button>
-                                )}
-                                <div className="text-right border-l border-white/5 pl-6">
-                                    <div className="flex items-center justify-end space-x-2 text-indigo-400 mb-0.5">
-                                        <Wifi size={12} className="animate-pulse" />
-                                        <span className="font-black text-[9px] uppercase tracking-[0.2em] italic leading-none">Healthy</span>
-                                    </div>
-                                    <p className="text-slate-600 text-[6px] font-black uppercase tracking-[0.4em]">Node Established</p>
+                                    <p className="text-slate-600 text-[5px] md:text-[6px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em]">Node Link</p>
                                 </div>
                             </div>
                         </footer>

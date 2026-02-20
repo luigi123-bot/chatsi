@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MessageSquare, Lock, Mail, ArrowRight, Loader2 } from 'lucide-react';
+import { MessageSquare, Lock, Mail, ArrowRight, Loader2, Eye, EyeOff, X, Key, CheckCircle2 } from 'lucide-react';
+import { clsx } from 'clsx';
 import Link from 'next/link';
 
 export default function LoginPage() {
@@ -10,7 +11,50 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showForgot, setShowForgot] = useState(false);
+    const [forgotEmail, setForgotEmail] = useState('');
+    const [forgotPassword, setForgotPassword] = useState('');
+    const [forgotLoading, setForgotLoading] = useState(false);
+    const [forgotSuccess, setForgotSuccess] = useState(false);
     const router = useRouter();
+
+    const handleResetPassword = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setForgotLoading(true);
+        setError('');
+        try {
+            const usersRes = await fetch('/api/users');
+            if (!usersRes.ok) throw new Error('Error al conectar');
+            const allUsers = await usersRes.json();
+            const user = allUsers.find((u: any) => u.email === forgotEmail);
+
+            if (!user) throw new Error('Email no encontrado');
+
+            const res = await fetch('/api/users/change-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId: user.id, newPassword: forgotPassword })
+            });
+
+            if (res.ok) {
+                setForgotSuccess(true);
+                setTimeout(() => {
+                    setShowForgot(false);
+                    setForgotSuccess(false);
+                    setForgotEmail('');
+                    setForgotPassword('');
+                }, 2000);
+            } else {
+                const d = await res.json();
+                throw new Error(d.error || 'Error al resetear');
+            }
+        } catch (err: any) {
+            setError(err.message);
+        } finally {
+            setForgotLoading(false);
+        }
+    };
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -84,18 +128,31 @@ export default function LoginPage() {
                     <div className="space-y-2">
                         <div className="flex justify-between items-center ml-1">
                             <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Password</label>
-                            <button type="button" className="text-[10px] font-black text-indigo-500 hover:text-indigo-400 uppercase tracking-widest">¿Olvido?</button>
+                            <button
+                                onClick={() => setShowForgot(true)}
+                                type="button"
+                                className="text-[10px] font-black text-indigo-500 hover:text-indigo-400 uppercase tracking-widest transition-colors"
+                            >
+                                ¿OLVIDO?
+                            </button>
                         </div>
-                        <div className="relative">
+                        <div className="relative group/field">
                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 w-5 h-5 group-focus-within:text-indigo-500 transition-colors" />
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
-                                className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:ring-2 focus:ring-indigo-500/20 focus:bg-white/10 transition-all outline-none font-medium text-sm"
+                                className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-12 text-white placeholder:text-slate-700 focus:ring-2 focus:ring-indigo-500/20 focus:bg-white/10 transition-all outline-none font-medium text-sm font-mono"
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-600 hover:text-indigo-400 transition-colors"
+                            >
+                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
                         </div>
                     </div>
 
@@ -120,6 +177,79 @@ export default function LoginPage() {
                     <Link href="/register" className="text-indigo-400 hover:text-indigo-300 transition underline underline-offset-4">Regístrate</Link>
                 </p>
             </div>
+
+            {/* Forgot Password Modal */}
+            {showForgot && (
+                <div className="absolute inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-300">
+                    <div className="w-full max-w-sm bg-[#0f172a] border border-white/10 rounded-[40px] p-8 shadow-2xl animate-in zoom-in-95 duration-500 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-3xl rounded-full -mr-16 -mt-16" />
+
+                        <button
+                            onClick={() => setShowForgot(false)}
+                            className="absolute top-6 right-6 p-2 text-slate-500 hover:text-white hover:bg-white/5 rounded-full transition-colors"
+                        >
+                            <X size={20} />
+                        </button>
+
+                        <div className="text-center mb-10">
+                            <div className="w-16 h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-indigo-500/20">
+                                <Key className="text-indigo-400" size={28} />
+                            </div>
+                            <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter">Security Reset</h3>
+                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em] mt-1">Direct Payload Access</p>
+                        </div>
+
+                        <form onSubmit={handleResetPassword} className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-2">Verification Email</label>
+                                <input
+                                    type="email"
+                                    required
+                                    value={forgotEmail}
+                                    onChange={(e) => setForgotEmail(e.target.value)}
+                                    placeholder="tu@email.com"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 transition-all"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-2">New Access Key</label>
+                                <input
+                                    type="password"
+                                    required
+                                    value={forgotPassword}
+                                    onChange={(e) => setForgotPassword(e.target.value)}
+                                    placeholder="••••••••"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 transition-all font-mono"
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={forgotLoading || forgotSuccess}
+                                className={clsx(
+                                    "w-full py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] transition-all flex items-center justify-center space-x-3 shadow-xl",
+                                    forgotSuccess ? "bg-green-500 text-white" : "bg-indigo-600 text-white hover:bg-indigo-500 active:scale-95 disabled:opacity-50 shadow-indigo-600/20"
+                                )}
+                            >
+                                {forgotLoading ? (
+                                    <Loader2 className="animate-spin text-white" size={18} />
+                                ) : forgotSuccess ? (
+                                    <>
+                                        <CheckCircle2 size={18} />
+                                        <span>Reset Success</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>Force Sync</span>
+                                        <ArrowRight size={18} />
+                                    </>
+                                )}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

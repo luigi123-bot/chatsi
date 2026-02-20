@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { MessageSquare, Lock, Mail, User, ArrowRight, Loader2 } from 'lucide-react';
+import { MessageSquare, Lock, Mail, User, ArrowRight, Loader2, Eye, EyeOff } from 'lucide-react';
+import { clsx } from 'clsx';
 import Link from 'next/link';
 
 export default function RegisterPage() {
@@ -11,6 +12,7 @@ export default function RegisterPage() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
 
     const handleRegister = async (e: React.FormEvent) => {
@@ -95,16 +97,23 @@ export default function RegisterPage() {
 
                     <div className="space-y-2">
                         <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Password</label>
-                        <div className="relative">
+                        <div className="relative group/field">
                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-600 w-5 h-5 group-focus-within:text-indigo-500 transition-colors" />
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
-                                className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-slate-700 focus:ring-2 focus:ring-indigo-500/20 focus:bg-white/10 transition-all outline-none font-medium text-sm"
+                                className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 pl-12 pr-12 text-white placeholder:text-slate-700 focus:ring-2 focus:ring-indigo-500/20 focus:bg-white/10 transition-all outline-none font-medium text-sm font-mono"
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-600 hover:text-indigo-400 transition-colors"
+                            >
+                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
                         </div>
                     </div>
 

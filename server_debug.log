@@ -185,3 +185,15 @@
 [2026-02-20T22:32:20.380Z] 🔌 Client connected: J7tmY5AvxZG9B4oUAAAT
 [2026-02-20T23:19:29.438Z] 👋 Client disconnected: J7tmY5AvxZG9B4oUAAAT
 [2026-02-20T23:19:30.371Z] 🔌 Client connected: iDmObree1EmlUoh_AAAV
+[2026-02-20T23:28:13.858Z] 👋 Client disconnected: iDmObree1EmlUoh_AAAV
+[2026-02-20T23:29:15.579Z] 🔌 Client connected: _jXD_OdoLlRPp4_hAAAX
+[2026-02-20T23:29:34.298Z] 🔌 Client connected: ezeNZW8fyQ-qq4UBAAAZ
+[2026-02-20T23:29:49.293Z] 🛠️ Attempting to create room: {"ownerId":"87ea1b95-5b6d-4cfe-970e-34691a4d07e4","guestEmail":"gotopoluis51@gmail.com"}
+[2026-02-20T23:29:49.295Z] 🌟 Room created: 554513 for guest gotopoluis51@gmail.com
+[2026-02-20T23:30:00.254Z] 🤝 Guest gotopoluis51@gmail.com joined room 554513
+[2026-02-20T23:32:33.701Z] 🚫 Room 554513 closed due to disconnect
+[2026-02-20T23:32:33.704Z] 👋 Client disconnected: _jXD_OdoLlRPp4_hAAAX
+[2026-02-20T23:32:34.267Z] 🔌 Client connected: suVD8ThRyCmTfY9qAAAb
+[2026-02-20T23:32:43.573Z] 🛠️ Attempting to create room: {"ownerId":"203a6db5-3ec3-442e-8544-f0c2023829f2","guestEmail":"gotopoluis19@gmail.com"}
+[2026-02-20T23:32:43.575Z] 🌟 Room created: 803174 for guest gotopoluis19@gmail.com
+[2026-02-20T23:33:03.673Z] 🤝 Guest gotopoluis19@gmail.com joined room 803174
